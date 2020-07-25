@@ -1,5 +1,5 @@
-const request = require('postman-request');
 const geoCode = require('./shared/geocode');
+const forecast = require('./shared/forecast');
 
 // hardcoded url -> bad code
 // const url =
@@ -23,6 +23,11 @@ const geoCode = require('./shared/geocode');
 // });
 
 geoCode('Madrid', (error, data) => {
+  console.log('Error: ', error);
+  console.log('Data: ', data);
+});
+
+forecast('-75.7088, 44.15.45', (error, data) => {
   console.log('Error: ', error);
   console.log('Data: ', data);
 });
