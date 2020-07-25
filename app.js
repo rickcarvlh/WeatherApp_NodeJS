@@ -1,11 +1,9 @@
 const request = require('postman-request');
-const geoCode = require('./common/geocode');
+const geoCode = require('./shared/geocode');
 
 // hardcoded url -> bad code
 // const url =
 //   'http://api.weatherstack.com/current?access_key=2bacbb8ab8fe4b5dcf92b55f1d8ba452&query=37.8267,-122,4233&units=m';
-
-
 
 // request({ url: url, json: true }, (error, response) => {
 //   // console.log(response.body.current);
@@ -23,7 +21,6 @@ const geoCode = require('./common/geocode');
 //     );
 //   }
 // });
-
 
 geoCode('Madrid', (error, data) => {
   console.log('Error: ', error);
