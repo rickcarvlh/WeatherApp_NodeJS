@@ -4,4 +4,5 @@ Weather App using NodeJS
 
 ## Content:
 
-Callpacks
+Callbacks
+APi Requests
