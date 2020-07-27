@@ -1,13 +1,22 @@
 const geoCode = require('./shared/geocode');
 const forcast = require('./shared/forcast');
 
-geoCode('Madrid', (error, data) => {
-  console.log('Error: ', error);
-  console.log('Data: ', data);
-});
+const address = process.argv[2];
 
-// ! not working properly 
-//  forcast('-75.7088, 44.15.45', (error, data) => {
-//    console.log('Error: ', error);
-//    console.log('Data: ', data);
-//  });
+if (!address) {
+  console.log('Please provide a valid address');
+} else {
+  geoCode(address, (error, { latitude, longitude, location }) => {
+    if (error) {
+      return console.log(error);
+    }
+
+    forcast(latitude, longitude, (error, forecastData) => {
+      if (error) {
+        return console.log(error);
+      }
+      console.log('Local: ', location);
+      console.log('Data: ', forecastData);
+    });
+  });
+}
