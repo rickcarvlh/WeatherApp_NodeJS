@@ -31,18 +31,18 @@ const forecast = (latitude, longitude, callback) => {
     longitude +
     '&units=m';
 
-  request({ url: url, json: true }, (error, response) => {
+  request({ url, json: true }, (error, {body}) => {
     if (error) {
       callback('Unable to connect to to weather service', undefined);
-    } else if (response.body.error) {
+    } else if (body.error) {
       callback('Unable find weather location', undefined);
     } else {
       callback(
         undefined,
         'It is currently ' +
-          response.body.current.temperature +
+          body.current.temperature +
           ' degrees. It feels like ' +
-          response.body.current.feelslike +
+          body.current.feelslike +
           ' degrees outside'
       );
     }
